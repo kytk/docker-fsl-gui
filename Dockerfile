@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 # FSL
 RUN cd /tmp && \
-    wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py \
+    wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
     /usr/bin/python3 fslinstaller.py -d /usr/local/fsl
 
 # Create a new user
