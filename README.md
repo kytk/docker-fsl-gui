@@ -3,67 +3,70 @@
 - Docker image of FSL (6.0.7.12) on Ubuntu 22.04
 - You can use FSL GUI via web browser
 
-## How to run the container
+## Features
 
-- Type the following in the terminal in your host:
+- FSL version 6.0.7.12
+- Ubuntu 22.04 base image
+- GUI accessible through a web browser
 
-    ```
-    docker run -d -p 6080:6080 \
-      -v /your/host/path:/home/brain/share \
-      --name fsl-docker \
-      kytk/docker-fsl-gui:latest
-    ```
+## Quick Start
 
-    - `-v /your/path/in/host:/home/brain/share` enables you to use your file in `/your/path/in/host in the container under `/home/brain/share`
+1. Run the container:
+   ```bash
+   docker run -d -p 6080:6080 \
+     -v /your/host/path:/home/brain/share \
+     --name fsl-docker \
+     kytk/docker-fsl-gui:latest
+   ```
+   - `-v /your/host/path:/home/brain/share`: Mounts a volume to share files between host and container
+   - `--name fsl-docker`: Names the container (customizable)
 
-    - `--name fsl-docker` names the container as 'fsl-docker' You can choose any name you want.
+2. Access the GUI:
+   - Open a web browser and navigate to: `http://localhost:6080/vnc.html`
 
-- Next, launch a browser on your host and enter the following address;
-
-    ```
-    localhost:6080/vnc.html
-    ```
-
-- Click "Connect"
- 
+   - Click "Connect"
     <img src="https://github.com/kytk/docker-fsl-gui/blob/main/img/novnc1.png">
 
-- Password is "FSLdocker"
-
+   - Enter the password: `FSLdocker`
     <img src="https://github.com/kytk/docker-fsl-gui/blob/main/img/novnc2.png">
 
-- Then you should be able to see the GUI.
-
-    <img src="https://github.com/kytk/docker-fsl-gui/blob/main/img/novnc3.png">
-
-- In order to run FSL, open terminal and type 'fsl' launches FSL GUI.
-
+3. Using FSL:
+   - Open a terminal in the GUI
+   - Type `fsl` to launch the FSL GUI
     <img src="https://github.com/kytk/docker-fsl-gui/blob/main/img/novnc4.png">
 
-- Files in your host should be found in `/home/brain/share` in the container.
 
-## How to stop the container
+## File Sharing
 
-- Type the following in the terminal of your host.
+Files from your host machine are accessible in the container at `/home/brain/share`.
 
-    ```
-    docker container stop fsl-docker
-    ```
+## Container Management
 
-## How to re-start the container
+### Stop the container
+```bash
+docker container stop fsl-docker
+```
 
-- Type the following in the terminal of your host.
+### Restart the container
+```bash
+docker container start fsl-docker
+```
 
-    ```
-    docker container rm fsl-docker
-    ```
+### Remove the container
+```bash
+docker container stop fsl-docker
+docker container rm fsl-docker
+```
 
-## How to remove the container
+## Troubleshooting
 
-- Type the following in the terminal of your host.
+If you encounter any issues, please check the following:
+- Ensure Docker is running on your host machine
+- Verify that port 6080 is not in use by another application
+- Check your firewall settings if you're unable to connect to the VNC interface
 
-    ```
-    docker container stop fsl-docker
-    docker container rm fsl-docker
-    ```
+## Support
+
+For issues, questions, or contributions, please open an issue on the GitHub repository.
+
 
