@@ -1,11 +1,11 @@
 # docker-fsl-gui
 
-- Docker image of FSL (6.0.7.12) on Ubuntu 22.04
+- Docker image of FSL (6.0.7.13) on Ubuntu 22.04
 - You can use FSL GUI via web browser
 
 ## Features
 
-- FSL version 6.0.7.12
+- FSL version 6.0.7.13
 - Ubuntu 22.04 base image
 - GUI accessible through a web browser
 
