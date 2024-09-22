@@ -56,6 +56,12 @@ COPY google-chrome.desktop /usr/share/applications/
 # set Google Chrome as default for xdg-mime
 RUN xdg-mime default google-chrome.desktop text/html
 
+# tutorial by Chris Rorden
+RUN cd /tmp && \
+    wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip && \
+    unzip -d /etc/skel/ tutorial.zip &&\
+    find /etc/skel/tutorial -type f -exec chmod 644 {} \; && \
+    find /etc/skel/tutorial -type d -exec chmod 755 {} \; 
 
 # Cleanup
 RUN apt-get clean \
