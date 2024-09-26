@@ -14,9 +14,10 @@
 1. Run the container:
    ```bash
    docker run -d -p 6080:6080 \
+     --platform linux/amd64 \
      -v /your/host/path:/home/brain/share \
      --name fsl-docker \
-     kytk/docker-fsl-gui:latest
+     kytk/docker-fsl-gui:6.0.7.13
    ```
    - `-v /your/host/path:/home/brain/share`: Mounts a volume to share files between host and container
    - `--name fsl-docker`: Names the container (customizable)
