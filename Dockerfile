@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     lightdm \
     lightdm-gtk-greeter \
     lightdm-gtk-greeter-settings \
-    shimmer-themes \
+    #shimmer-themes \
     xinit \
     build-essential  \
     dkms \
@@ -44,6 +44,25 @@ RUN cd /tmp && \
     wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
     /usr/bin/python3 fslinstaller.py -d /usr/local/fsl
 
+## Firefox
+#RUN set -ex \
+#    && install -d -m 0755 /etc/apt/keyrings \
+#    && wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- |\
+#       tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null \
+#    && echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null \
+#    && echo '\n\
+#Package: *\n\
+#Pin: origin packages.mozilla.org\n\
+#Pin-Priority: 1000\n\
+#' | tee /etc/apt/preferences.d/mozilla \
+#    && apt-get update \
+#    && apt-get install -y firefox \
+#    && apt-get clean \
+#    && rm -rf /var/lib/apt/lists/* \
+#    && rm -rf /tmp/* /var/tmp/* \
+#    && rm -rf /usr/share/doc/* \
+#    && rm -rf /usr/share/man/*
+
 # Google Chrome
 RUN cd /tmp && \
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
@@ -56,12 +75,12 @@ COPY google-chrome.desktop /usr/share/applications/
 # set Google Chrome as default for xdg-mime
 RUN xdg-mime default google-chrome.desktop text/html
 
-# tutorial by Chris Rorden
-RUN cd /tmp && \
-    wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip && \
-    unzip -d /etc/skel/ tutorial.zip &&\
-    find /etc/skel/tutorial -type f -exec chmod 644 {} \; && \
-    find /etc/skel/tutorial -type d -exec chmod 755 {} \; 
+## tutorial by Chris Rorden
+#RUN cd /tmp && \
+#    wget http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip && \
+#    unzip -d /etc/skel/ tutorial.zip &&\
+#    find /etc/skel/tutorial -type f -exec chmod 644 {} \; && \
+#    find /etc/skel/tutorial -type d -exec chmod 755 {} \; 
 
 # Cleanup
 RUN apt-get clean \

@@ -1,11 +1,11 @@
 # docker-fsl-gui
 
-- Docker image of FSL (6.0.7.17) on Ubuntu 22.04
+- Docker image of FSL (6.0.7.18) on Ubuntu 22.04
 - You can use FSL GUI via web browser
 
 ## Features
 
-- FSL version 6.0.7.17
+- FSL version 6.0.7.18
 - Ubuntu 22.04 base image
 - GUI accessible through a web browser
 
@@ -17,7 +17,7 @@
      --platform linux/amd64 \
      -v /your/host/path:/home/brain/share \
      --name fsl-docker \
-     kytk/docker-fsl-gui:6.0.7.17
+     kytk/docker-fsl-gui:6.0.7.18
    ```
    - `-v /your/host/path:/home/brain/share`: Mounts a volume to share files between host and container
    - `--name fsl-docker`: Names the container (customizable)
